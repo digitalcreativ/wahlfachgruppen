@@ -105,12 +105,12 @@ function parse(text,source='Eingefügte Tabelle'){
  const top=rows.slice(0,hi).flat().map(s=>s.trim());const school=top.find(v=>/^(ST\s*\d+|OSS)$/i.test(v))||'';
  const double=[['bg','BG'],['txg','Textiles Gestalten'],['tg','Technisches Gestalten']],single=[['mu','Musik'],['dep','Deutsch plus'],['in','Informatik plus']];
  for(const r of rows.slice(hi+1)){
- const klasse=get(r,'klasse'),name=get(r,'name'),vorname=get(r,'vorname');if(!/^[SR]\s*\d+[a-z0-9]*$/i.test(klasse)||!name||!vorname){skipped++;continue;}
+ const klasse=get(r,'klasse'),name=get(r,'name'),vorname=get(r,'vorname'),anonymous=/^sus-\d+$/i.test(name);if(!/^[SR]\s*\d+[a-z0-9]*$/i.test(klasse)||!name||(!vorname&&!anonymous)){skipped++;continue;}
  const active=items=>items.filter(([k])=>{let v=get(r,k);return v!==''&&v!=='0';});const d=active(double),s=active(single);let notes=[],first='',second='';
  if(d.length===1)first=d[0][1];else if(d.length>1){let p1=d.filter(([k])=>/^1(?:\s*[.])?$/.test(get(r,k))),p2=d.filter(([k])=>/^2(?:\s*[.])?$/.test(get(r,k)));if(p1.length===1&&p2.length===1&&d.length===2){first=p1[0][1];second=p2[0][1];}else notes.push('Mehrere Gestaltungsfächer markiert: '+d.map(x=>x[1]).join(', '));}
  if(s.length>1)notes.push('Mehrere Einzelfächer markiert: '+s.map(x=>x[1]).join(', '));
  let extra=['fr','bst'].filter(k=>get(r,k)&&get(r,k)!=='0').map(k=>k==='fr'?'Fr':'BSt');
- list.push({id:'matrix-'+encodeURIComponent(klasse+'|'+name+'|'+vorname),name:vorname+' '+name,klasse,niveau:/^s/i.test(klasse)?'Sek':'Real',haus:school,erst:first,zweit:second,einzel:s.length===1?s[0][1]:'',extra,geschlecht:get(r,'geschlecht'),importNotes:notes,source});
+ list.push({id:'matrix-'+encodeURIComponent(klasse+'|'+name+'|'+vorname),name:anonymous?name:vorname+' '+name,klasse,niveau:/^s/i.test(klasse)?'Sek':'Real',haus:school,erst:first,zweit:second,einzel:s.length===1?s[0][1]:'',extra,geschlecht:get(r,'geschlecht'),importNotes:notes,source});
  }
  warnings.push('Fachmatrix erkannt. m/w bedeuten männlich/weiblich; ein belegtes Fachfeld zeigt die Wahl. Ohne ausgewiesene Prioritäten wird das einzige markierte Gestaltungsfach als Erstwahl übernommen.');if(!school)warnings.push('Schulhaus konnte nicht erkannt werden; bitte pro Klasse ergänzen.');
  }

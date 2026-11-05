@@ -5,7 +5,7 @@
 **Ausbildung:** CAS Bildung im digitalen Wandel – KI-Modul  
 **Projektkontext:** Schulen Baar  
 **Verfasserin:** Claudia Bürgisser  
-**Bearbeitungsstand:** 4. November 2026
+**Bearbeitungsstand:** 5. November 2026
 
 > Hinweis: Die früheren Entwicklungsschritte wurden anhand des aktuellen Projektstands und der vorhandenen Dateien rückblickend zusammengefasst. Der Eintrag vom 3. November 2026 entstand direkt im Anschluss an die Anpassung.
 
@@ -100,6 +100,24 @@ Ich überarbeitete die Kopfgestaltung und die typografische Hierarchie der Anwen
 Die Reihenfolge der Gruppenbildung wird oben rechts nun verständlicher beschrieben: zuerst klassenintern, danach klassenübergreifend bei weiterhin getrennten Niveaus Real und Sek und schliesslich bei Bedarf schulhausübergreifend. Die mögliche Ausnahme bei zu kleinen Gruppen bleibt separat ausgewiesen.
 
 Ausserdem vereinheitlichte ich die Schrift der Überschriften mit der Schrift des Untertitels «Schulen Baar». Der zentrale Button «Gruppen berechnen» behält zur besseren Erkennbarkeit eine etwas kräftigere, eigenständige Schriftgestaltung.
+
+### Phase 10: Farbkonzept, Veröffentlichung und inklusive Sprache – 5. November 2026
+
+Ich passte das Erscheinungsbild an das Farbkonzept der Schulen Baar an. Blau dient nun als Hauptfarbe, Orange beziehungsweise Gelb als Akzentfarbe. Weisse und hellgraue Flächen sowie eine dunkle, neutrale Schrift sorgen für Übersichtlichkeit. Tabellenköpfe, aktive Filter, Schaltflächen und Hinweise wurden farblich aufeinander abgestimmt.
+
+Anschliessend richtete ich für das Projekt ein GitHub-Repository ein und veröffentlichte die Anwendung mit GitHub Pages. Damit kann das Werkzeug über einen Weblink direkt im Browser aufgerufen werden. Eine `.nojekyll`-Datei kennzeichnet das Projekt als statische Webseite und unterstützt die automatische Bereitstellung nach jedem Push auf den Hauptbranch.
+
+Beim Einrichten der Veröffentlichung achtete ich besonders auf den Datenschutz. Die beiden lokalen CSV-Testdateien wurden aus dem veröffentlichten Git-Verlauf entfernt. Eine `.gitignore`-Regel verhindert, dass CSV-Dateien künftig versehentlich zu GitHub hochgeladen werden. Die Testdateien bleiben lokal für die Erprobung der Anwendung verfügbar.
+
+Zum Abschluss überprüfte ich die Sprache der Benutzeroberfläche. Die Überschrift «Schülerdaten» bei Schritt 1 wurde durch die kurze und inklusive Bezeichnung «SuS-Daten» ersetzt. Für Mengen- und Grenzwerte wird weiterhin der sachliche Begriff «Gruppengrössen» verwendet.
+
+Die veröffentlichte Anwendung ist erreichbar unter: `https://digitalcreativ.github.io/wahlfachgruppen/`
+
+### Phase 11: Testdaten anonymisieren – 5. November 2026
+
+Für Demonstrationen gegenüber Kolleginnen und Kollegen anonymisierte ich die beiden lokalen CSV-Testdateien vollständig. Sämtliche Vor- und Nachnamen wurden durch 159 eindeutige Kennungen von `SuS-1` bis `SuS-159` ersetzt. Klassen, Niveau, Geschlecht und Fachwahlen blieben erhalten, damit die Dateien weiterhin realistische Berechnungen ermöglichen. Die Klassen a–c gehören dabei zu Schulhaus 1 und die Klassen d–f zu Schulhaus 2; `R` bezeichnet Real und `S` Sek.
+
+Der Import wurde so erweitert, dass anonymisierte Fachmatrizen mit einer einzelnen `SuS-*`-Kennung ohne zweites Namensfeld verarbeitet werden können. Eine abschliessende Prüfung bestätigte, dass keine ursprünglichen Namen oder Namensangaben in Bemerkungsfeldern mehr vorhanden sind. Die CSV-Dateien bleiben weiterhin durch `.gitignore` vom öffentlichen GitHub-Repository ausgeschlossen und können bei Bedarf separat weitergegeben werden.
 
 ## 3. Einsatz von künstlicher Intelligenz
 
