@@ -129,6 +129,14 @@ Besonders wichtig war mir, dass eine bessere Auslastung nicht zu unnötiger Schu
 
 Mit den überarbeiteten Beispieldaten ergab die Prüfung 32 Gruppen, alle 160 Erstwünsche erfüllt, keine offenen Zuteilungen und keine schulhausübergreifenden Gruppen. Zusätzlich wurden die Zuordnung von Klassen zu Schulhäusern, die Mindest- und Maximalgrössen sowie die vollständige und eindeutige Zuteilung pro SuS und Lektionstyp geprüft. Die höhere Gruppenzahl gegenüber dem ersten Vergleich erklärt sich durch die geänderten Beispieldaten und den Vorrang der Schulhaustrennung. Die Ergebnisse sind Testfälle und kein Nachweis einer global optimalen Einteilung.
 
+### Phase 13: Klasseninterne Gruppen wieder vorrangig behandeln – 6. November 2026
+
+Bei einer weiteren Prüfung präzisierte ich die Prioritäten: Wenn innerhalb einer Klasse im betreffenden Fach eine Gruppe mit gültiger Mindest- und Maximalgrösse möglich ist, soll diese gegenüber einer Verteilung auf gemischte Gruppen bevorzugt werden. Als Beispiel nannte ich S1e im Technischen Gestalten. Die bessere Gruppenauslastung darf diese Priorität nicht verdrängen.
+
+Die Gewichtung wurde sowohl bei der Suche nach Fachzuteilungen als auch bei der anschliessenden Gruppenbildung angepasst. Nach möglichst wenigen offenen Zuteilungen, möglichst vielen Erstwünschen und möglichst wenig Schulhausmischung werden nun klasseninterne Gruppen bevorzugt. Erst danach folgt die möglichst geringe Gruppenzahl. Diese Präzisierung ersetzt die entsprechende Reihenfolge aus Phase 12. Die Erklärung in der Anwendung wurde ebenfalls aktualisiert.
+
+Ein konstruierter Prüffall mit sechs SuS aus S1e sowie je sieben aus S1d und S1f im Technischen Gestalten bestätigte, dass alle drei Klassen eigene Gruppen erhalten und S1e zusammenbleibt. Ein weiterer Prüffall mit drei Klassen zu je sechs SuS bestätigte den Vorrang dreier klasseninterner Gruppen gegenüber zwei gemischten Gruppen. Mit den 160 Beispieldaten entstehen weiterhin 32 Gruppen ohne offene Zuteilungen oder Schulhausmischung; alle Erstwünsche werden erfüllt. Die Gruppengrenzen und die eindeutige Zuteilung wurden ebenfalls geprüft. Die Suche bleibt eine Heuristik und garantiert keine global optimale Lösung.
+
 ## 3. Einsatz von künstlicher Intelligenz
 
 Ich setzte KI als Unterstützung bei der Konzeption, Programmierung, Fehlersuche und sprachlichen Überarbeitung ein. Dabei formulierte ich die Anforderungen und prüfte die vorgeschlagenen Lösungen anhand der schulischen Einteilungsregeln. Anpassungen wurden schrittweise vorgenommen und mit den vorhandenen Testdateien beziehungsweise Beispieldaten kontrolliert.
