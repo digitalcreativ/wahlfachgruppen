@@ -5,7 +5,7 @@
 **Ausbildung:** CAS Bildung im digitalen Wandel – KI-Modul  
 **Projektkontext:** Schulen Baar  
 **Verfasserin:** Claudia Bürgisser  
-**Bearbeitungsstand:** 5. November 2026
+**Bearbeitungsstand:** 6. November 2026
 
 > Hinweis: Die früheren Entwicklungsschritte wurden anhand des aktuellen Projektstands und der vorhandenen Dateien rückblickend zusammengefasst. Der Eintrag vom 3. November 2026 entstand direkt im Anschluss an die Anpassung.
 
@@ -118,6 +118,16 @@ Die veröffentlichte Anwendung ist erreichbar unter: `https://digitalcreativ.git
 Für Demonstrationen gegenüber Kolleginnen und Kollegen anonymisierte ich die beiden lokalen CSV-Testdateien vollständig. Sämtliche Vor- und Nachnamen wurden durch 159 eindeutige Kennungen von `SuS-1` bis `SuS-159` ersetzt. Klassen, Niveau, Geschlecht und Fachwahlen blieben erhalten, damit die Dateien weiterhin realistische Berechnungen ermöglichen. Die Klassen a–c gehören dabei zu Schulhaus 1 und die Klassen d–f zu Schulhaus 2; `R` bezeichnet Real und `S` Sek.
 
 Der Import wurde so erweitert, dass anonymisierte Fachmatrizen mit einer einzelnen `SuS-*`-Kennung ohne zweites Namensfeld verarbeitet werden können. Eine abschliessende Prüfung bestätigte, dass keine ursprünglichen Namen oder Namensangaben in Bemerkungsfeldern mehr vorhanden sind. Die CSV-Dateien bleiben weiterhin durch `.gitignore` vom öffentlichen GitHub-Repository ausgeschlossen und können bei Bedarf separat weitergegeben werden.
+
+### Phase 12: Gruppen besser füllen und Beispieldaten präzisieren – 6. November 2026
+
+Beim Ausprobieren mit den 160 fiktiven Schülerinnen und Schülern fiel mir auf, dass viele kleine Gruppen entstanden. Die bisherige Gewichtung bevorzugte klassenreine Gruppen zu stark. Ich liess die Einteilungslogik deshalb so anpassen, dass innerhalb der organisatorischen Vorgaben weniger und besser gefüllte Gruppen entstehen. Ein erster Vergleich mit den bisherigen Beispieldaten ergab 28 statt 37 Gruppen bei vollständig erfüllten Erstwünschen und ohne offene Zuteilungen.
+
+Anschliessend präzisierte ich die Vorgaben für die Beispieldaten: höchstens zwei Schulhäuser und 14 Klassen sowie eindeutige Klassenbezeichnungen mit R für Real und S für Sek. Der überarbeitete Beispielgenerator erzeugt 160 fiktive SuS in zwölf Klassen, R1a–R1f und S1a–S1f. Die Klassen R1a–R1c und S1a–S1c gehören zu Schulhaus 1, R1d–R1f und S1d–S1f zu Schulhaus 2. Auch die CSV-Vorlage verwendet nun entsprechende Klassen- und Schulhausbezeichnungen.
+
+Besonders wichtig war mir, dass eine bessere Auslastung nicht zu unnötiger Schulhausmischung führt. Die Suche priorisiert bei getrennter Einteilung nun möglichst wenige offene Zuteilungen, möglichst wenige Zweitwahlen, möglichst wenig Schulhausmischung und danach möglichst wenige Gruppen. Innerhalb gleichwertiger Lösungen werden Klassen möglichst zusammengehalten. Real und Sek bleiben grundsätzlich getrennt; die gekennzeichnete Ausnahme bei zu kleinen Gruppen bleibt bestehen.
+
+Mit den überarbeiteten Beispieldaten ergab die Prüfung 32 Gruppen, alle 160 Erstwünsche erfüllt, keine offenen Zuteilungen und keine schulhausübergreifenden Gruppen. Zusätzlich wurden die Zuordnung von Klassen zu Schulhäusern, die Mindest- und Maximalgrössen sowie die vollständige und eindeutige Zuteilung pro SuS und Lektionstyp geprüft. Die höhere Gruppenzahl gegenüber dem ersten Vergleich erklärt sich durch die geänderten Beispieldaten und den Vorrang der Schulhaustrennung. Die Ergebnisse sind Testfälle und kein Nachweis einer global optimalen Einteilung.
 
 ## 3. Einsatz von künstlicher Intelligenz
 
