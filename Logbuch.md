@@ -5,9 +5,9 @@
 **Ausbildung:** CAS Bildung im digitalen Wandel – KI-Modul  
 **Projektkontext:** Schulen Baar  
 **Verfasserin:** Claudia Bürgisser  
-**Bearbeitungsstand:** 6. November 2026
+**Bearbeitungsstand:** 10. November 2026
 
-> Hinweis: Die früheren Entwicklungsschritte wurden anhand des aktuellen Projektstands und der vorhandenen Dateien rückblickend zusammengefasst. Der Eintrag vom 3. November 2026 entstand direkt im Anschluss an die Anpassung.
+> Hinweis: Die früheren Entwicklungsschritte wurden anhand des aktuellen Projektstands und der vorhandenen Dateien rückblickend zusammengefasst. Die späteren Einträge dokumentieren die Anpassungen aus der laufenden Erprobung. Frühere Regeln und Testergebnisse beschreiben den damaligen Stand; die aktuell gültigen Vorgaben sind in Abschnitt 6 zusammengefasst.
 
 ## 1. Ausgangslage und Zielsetzung
 
@@ -137,6 +137,60 @@ Die Gewichtung wurde sowohl bei der Suche nach Fachzuteilungen als auch bei der 
 
 Ein konstruierter Prüffall mit sechs SuS aus S1e sowie je sieben aus S1d und S1f im Technischen Gestalten bestätigte, dass alle drei Klassen eigene Gruppen erhalten und S1e zusammenbleibt. Ein weiterer Prüffall mit drei Klassen zu je sechs SuS bestätigte den Vorrang dreier klasseninterner Gruppen gegenüber zwei gemischten Gruppen. Mit den 160 Beispieldaten entstehen weiterhin 32 Gruppen ohne offene Zuteilungen oder Schulhausmischung; alle Erstwünsche werden erfüllt. Die Gruppengrenzen und die eindeutige Zuteilung wurden ebenfalls geprüft. Die Suche bleibt eine Heuristik und garantiert keine global optimale Lösung.
 
+### Phase 14: Real und Sek verbindlich trennen und Klassenpaare bilden – 10. November 2026
+
+Bei der weiteren Erprobung präzisierte ich die organisatorischen Regeln. Real und Sek müssen in allen Fächern immer getrennt bleiben, auch bei zu kleinen Gruppen. Die bisherige Ausnahme für niveaugemischte Gruppen wurde deshalb entfernt. Wenn keine gültige Gruppe gebildet werden kann, bleibt die Fachzuteilung sichtbar offen.
+
+BG, Technisches Gestalten und Textiles Gestalten finden innerhalb einer Klasse gleichzeitig statt. Deshalb dürfen Klassen nicht für jedes dieser Fächer unabhängig miteinander kombiniert werden. Ich liess feste, voneinander unabhängige Klassenblöcke mit höchstens zwei Klassen einführen. Innerhalb eines solchen Blocks können sowohl gemischte als auch klassenreine Gruppen entstehen. Beispielsweise sind S2a + S2c in TG und TxG sowie separate BG-Gruppen für S2a und S2c möglich.
+
+Anschliessend erweiterte ich dieselbe Paarregel auf Musik, Deutsch plus und Informatik plus. Eine Klasse darf damit über alle sechs Fächer hinweg nur mit derselben Partnerklasse gemischt werden. Die Paarbildung berücksichtigt die Fachwahlen beider Lektionstypen gemeinsam. Die Klassenblöcke werden bei den Gruppen angezeigt und begrenzen die manuellen Verschiebungen. Gespeicherte Einteilungen mit unzulässigen Mischungen müssen nach Übernahme der Daten und Einstellungen neu berechnet werden.
+
+### Phase 15: Gruppengrössen und Darstellung anpassen – 10. November 2026
+
+Ich passte die Gruppengrenzen schrittweise an die konkreten Planungsvorgaben an. Zunächst wurden für beide Niveaus die Maximalgrössen auf 18 für BG, 12 für TG und TxG sowie 18 für die drei Einzelfächer gesetzt. Danach erhöhte ich in der Sek die Maximalgrössen für Musik, Deutsch plus und Informatik plus auf 20. Zuletzt senkte ich die Mindestgrösse in allen drei Gestaltungsfächern bei Real und Sek von 6 auf 5. Die Mindestgrösse der Einzelfächer bleibt 8. Alle Grenzen sind weiterhin individuell einstellbar.
+
+Für eine bessere Orientierung tauschte ich die Schriftgrössen der Gruppeninformationen: «Klassenrein» beziehungsweise die Mischungsbezeichnung erscheint grösser, die ergänzende Angabe «Klassenblock» kleiner.
+
+### Phase 16: Offene Zuteilungen für beide Lektionstypen bearbeiten – 10. November 2026
+
+SuS ohne vollständige Fachwahl benötigen für die Doppel- und die Einzellektion jeweils eine eigene Zuteilung. Ich liess die offenen Fälle deshalb getrennt unter «Doppellektion · BG / TG / TxG» und «Einzellektion · Musik / Deutsch plus / Informatik plus» aufführen. Fehlen beide Wahlen, erscheint die betreffende Person in beiden Bereichen.
+
+Bei einer offenen Doppellektion können alle drei Gestaltungsfächer angeboten werden. Bei einer fehlenden Einzelfachwahl sind die drei Einzelfächer möglich. Eine vorhandene feste Einzelfachwahl bleibt berücksichtigt. Die Auswahl führt zu bestehenden Gruppen; neue Gruppen werden dadurch nicht automatisch angelegt. Die maximale Gruppengrösse wird beim Verschieben kontrolliert.
+
+Eine weitere praktische Prüfung zeigte, dass die Zugehörigkeit zum selben Klassenblock allein noch nicht ausreicht: SuS aus S2a sollen beispielsweise nicht in die klassenreine BG-Gruppe der S2c gelangen. Ich schränkte die Auswahl für offene Zuteilungen deshalb zusätzlich ein. Es erscheinen nur Gruppen, in denen bereits SuS derselben Klasse sind. Das gilt für beide Lektionstypen und wird auch unmittelbar beim Verschieben geprüft.
+
+### Phase 17: Schulhausgrenzen auch für Klassenblöcke absichern – 10. November 2026
+
+Bei einer Prüfung fiel ein Klassenblock S2a + S2e auf. Die sichtbare Informatikgruppe war zwar klassenrein, der hinterlegte Block verband jedoch zwei Schulhäuser. Eine blosse Bevorzugung schulhausinterner Lösungen genügte somit nicht.
+
+Ich liess die Schulhaustrennung verbindlich in die Paarbildung aufnehmen. Gruppen und Klassenblöcke dürfen nur innerhalb desselben Niveaus und Schulhauses entstehen. Zusätzlich gilt für die Klassenbezeichnungen mit R oder S und den Buchstaben a bis f: a/b/c gehören zu Schulhaus 1, d/e/f zu Schulhaus 2. Diese Klassengruppen dürfen auch dann nicht kombiniert werden, wenn im Import versehentlich dieselbe Schulhausbezeichnung steht. Die Schutzregel gilt ebenso bei manuellen Verschiebungen und bei der Prüfung gespeicherter Pläne.
+
+Damit entfällt auch die in früheren Phasen beschriebene Möglichkeit einer schulhausübergreifenden Zuteilung. Zu kleine Gruppen bleiben gegebenenfalls offen.
+
+### Phase 18: Klassenpaar S2a + S2c festlegen und aktuellen Stand prüfen – 10. November 2026
+
+Anhand der vorhandenen anonymisierten Schülerlisten prüfte ich die konkrete Situation von S2a, S2b und S2c. S2a hat 15 BG-, 5 TG- und 1 TxG-Wahl sowie eine fehlende Gestaltungswahl. S2c hat 9 BG-, 7 TG- und 5 TxG-Wahlen sowie ebenfalls eine fehlende Gestaltungswahl. Das Paar S2a + S2c ermöglicht damit zwei klassenreine BG-Gruppen sowie eine gemeinsame TG-Gruppe mit 12 und eine gemeinsame TxG-Gruppe mit 6 SuS.
+
+Ich legte dieses Klassenpaar für die aktuelle Planung ausdrücklich fest. Es wird bei der Berechnung verwendet, sofern beide Klassen innerhalb desselben zulässigen Schulhausbereichs vorhanden sind. S2b bleibt in der vorliegenden Konstellation klassenintern. Die Vorgabe gilt wie die übrigen Klassenpaare über alle sechs Fächer hinweg.
+
+Die Senkung der gestalterischen Mindestgrösse auf 5 löst nicht jeden offenen Fall: In S2b bleiben die 4 TxG-Wahlen unter dem Minimum. Auch die kleinen Musik- und Deutsch-plus-Gruppen werden dadurch nicht automatisch möglich. Fehlende Wahlen müssen weiterhin nachgefragt und organisatorische Ausnahmen bewusst entschieden werden.
+
+Die wiederholbaren Prüfungen in `verify.cjs` kontrollieren unter anderem die JavaScript-Syntax, die Gruppengrenzen, die vollständige und eindeutige Zuordnung pro SuS und Lektionstyp, die Trennung von Real und Sek sowie die gemeinsamen Klassenpaare über alle sechs Fächer. Zusätzlich werden die Schulhausgrenzen bei gleichen importierten Schulhausbezeichnungen, das vorgegebene Paar S2a + S2c und die Auswahl offener Zuteilungen nur bei tatsächlichen Mitschülerinnen und Mitschülern geprüft. Auch der direkte Versuch, eine offene S2a-Zuteilung in die klassenreine BG-Gruppe der S2c zu verschieben, wird abgewiesen.
+
+Mit dem aktuellen Stand ergeben die 160 fiktiven Beispieldaten 34 Gruppen und 53 offene Fachzuteilungen. Die Prüfung der Sennweider Testdatei bestätigt S2a + S2c und klasseninterne Gruppen der S2b. Bei den Doppellektionen bleiben dort die zwei fehlenden Wahlen aus S2a und S2c sowie die vier TxG-Zuteilungen der S2b offen. Frühere Testergebnisse ohne offene Zuteilungen beziehen sich auf die damaligen, weniger strengen Regeln. Die Suche bleibt eine Heuristik und liefert keinen Nachweis einer global optimalen Einteilung.
+
+### Phase 19: Klassen- und Fachübersicht aus den vorhandenen Importen – 10. November 2026
+
+Ich ergänzte einen aufklappbaren Bereich «Klassen & Fächer · Übersicht und Hinweise» oberhalb der Gruppenübersicht. Die beiden bestehenden CSV-Dateien können weiterhin gemeinsam hochgeladen werden. Die neue Übersicht entsteht ausschliesslich aus den geladenen Schülerlisten und der aktuellen Einteilung; eine zusätzliche Zusammenstellungsdatei ist nicht erforderlich.
+
+Ein Klassenfilter begrenzt die Anzeige bei Bedarf auf eine einzelne Klasse. Pro Klasse und Fach werden die Erst- beziehungsweise festen Wahlen, separat die Zweitwahlen, die zugeordneten SuS und die offenen Fälle mit vorhandener Fachwahl angezeigt. Die Gruppenangaben zeigen jeweils den Anteil der Klasse sowie die gesamte Belegung im Verhältnis zum Maximum. Vor der Berechnung erscheinen bereits die Wahlzahlen; die Zuteilungsspalten bleiben bis zur Berechnung offen.
+
+Hinweise machen fehlende Fachwahlen, Importhinweise, fehlende Schulhausangaben und offene Zuteilungen sichtbar. Liegt die Zahl der Wahlen klassenintern unter dem Minimum, wird auf die Prüfung einer Mischung innerhalb des festen Klassenpaars hingewiesen. Dies ist kein automatischer Nachweis, dass eine gemeinsame Gruppe unmöglich ist. Volle Gruppen und verletzte Gruppengrenzen werden zusätzlich aufgeführt. Ein Vergleich mit den importierten Wahlen macht Abweichungen durch Zweitwahlen oder manuelle Änderungen sichtbar. Fehlende Fachwahlen werden nicht einem beliebigen Fach zugeschrieben und erscheinen deshalb gesondert bei den Hinweisen.
+
+Die Übersicht aktualisiert sich bei einer neuen Berechnung, bei Änderungen der Importangaben und bei manuellen Verschiebungen. Auch doppelte oder unvollständige Zuordnungen pro SuS und Lektionstyp werden geprüft. Die bestehenden Regeln für Niveau, Schulhaus, Klassenpaare und manuelle Zuteilungen bleiben bestehen.
+
+Die automatisierten Prüfungen wurden mit beiden ursprünglichen CSV-Testdateien zusammen durchgeführt (159 SuS). Geprüft wurden Wahl- und Zuordnungszahlen, die Anzeige vor und nach der Berechnung, fehlende Wahlen, Engpässe, volle Gruppen, die Aktualisierung nach manueller Zuteilung, die Erkennung doppelter Zuordnungen, der Klassenfilter und die HTML-Ausgabe der Übersicht. Der Upload mehrerer Dateien bleibt vorhanden. Eine visuelle Browserprüfung wurde in dieser Umgebung nicht durchgeführt.
+
 ## 3. Einsatz von künstlicher Intelligenz
 
 Ich setzte KI als Unterstützung bei der Konzeption, Programmierung, Fehlersuche und sprachlichen Überarbeitung ein. Dabei formulierte ich die Anforderungen und prüfte die vorgeschlagenen Lösungen anhand der schulischen Einteilungsregeln. Anpassungen wurden schrittweise vorgenommen und mit den vorhandenen Testdateien beziehungsweise Beispieldaten kontrolliert.
@@ -160,10 +214,29 @@ Weitere wichtige Erkenntnisse waren:
 
 Das Projekt zeigt mir, dass KI die Entwicklung eines auf einen konkreten Schulprozess zugeschnittenen Werkzeugs stark beschleunigen kann. Ohne genaue Kenntnis des schulischen Ablaufs wäre jedoch keine brauchbare Lösung entstanden. Entscheidend war das Zusammenspiel zwischen meinem Fachwissen, dem schrittweisen Testen und der technischen Unterstützung durch KI.
 
-Besonders gelungen finde ich die lokale und übersichtliche Lösung: Die Anwendung benötigt keinen Server, kann mit realistischen Testdaten ausprobiert werden und macht offene Fälle transparent. Gleichzeitig sehe ich Grenzen. Raumbelegung, Lehrpersonen, Stundenplanüberschneidungen und weitere organisatorische Bedingungen sind bisher nicht Bestandteil der Berechnung. Auch die gefundene Gruppierung bleibt ein Vorschlag und muss kontrolliert werden.
+Besonders gelungen finde ich die lokale und übersichtliche Lösung: Die Anwendung benötigt keinen Server, kann mit realistischen Testdaten ausprobiert werden und macht offene Fälle transparent. Gleichzeitig sehe ich Grenzen. Die gemeinsamen Klassenpaare berücksichtigen die organisatorische Verbindung der Fächer; konkrete Raumbelegung, Lehrpersonen und weitere Stundenplanüberschneidungen werden jedoch noch nicht berechnet. Auch die gefundene Gruppierung bleibt ein Vorschlag und muss kontrolliert werden.
 
 Für eine Weiterentwicklung würde ich strukturierte Tests mit echten, anonymisierten Planungsfällen durchführen, Rückmeldungen weiterer Anwenderinnen und Anwender einholen und die Regeln für manuelle Ausnahmezuteilungen noch deutlicher in der Oberfläche und in den Exporten dokumentieren.
 
 ## 6. Aktueller Stand
 
-Die Anwendung liegt als eigenständige Datei `index.html` vor. Zwei Testdateien für die Schulhäuser Sennweid und Sternmatt stehen zur Verfügung. Der aktuelle Funktionsumfang umfasst Import, Datenprüfung, automatische Gruppenbildung, manuelle Anpassung, offene Zuteilungen, CSV- und PDF-Export sowie das Sichern und Wiederöffnen eines Planungsstands.
+Die Anwendung liegt als eigenständige Datei `index.html` vor. Zwei anonymisierte Testdateien für die Schulhäuser Sennweid und Sternmatt stehen zur Verfügung. Der Funktionsumfang umfasst Import, Datenprüfung, automatische Gruppenbildung, manuelle Anpassung, getrennt dargestellte offene Doppel- und Einzelfachzuteilungen, CSV- und PDF-Export sowie das Sichern und Wiederöffnen eines Planungsstands. Die wiederholbaren Prüfungen sind in `verify.cjs` dokumentiert.
+
+Aktuell gelten folgende Standardgrenzen:
+
+| Fach | Real: Minimum–Maximum | Sek: Minimum–Maximum |
+|---|---:|---:|
+| Bildnerisches Gestalten | 5–18 | 5–18 |
+| Technisches Gestalten | 5–12 | 5–12 |
+| Textiles Gestalten | 5–12 | 5–12 |
+| Musik | 8–18 | 8–20 |
+| Deutsch plus | 8–18 | 8–20 |
+| Informatik plus | 8–18 | 8–20 |
+
+Zusätzlich zeigt der aufklappbare Bereich «Klassen & Fächer» aus den vorhandenen Importdaten eine filterbare Klassen-/Fachübersicht mit Wahlen, Zuteilungen, offenen Fällen und Gruppenbelegung. Hinweise zu fehlenden Angaben und Engpässen aktualisieren sich mit der Einteilung. Die beiden bisherigen CSV-Dateien können weiterhin gemeinsam importiert werden; eine weitere Datei ist nicht nötig.
+
+Die Grenzwerte sind einstellbar. Beim Öffnen eines gespeicherten Plans werden dessen Einstellungen übernommen; die aktuellen Standardwerte ersetzen bestehende gespeicherte Werte nicht automatisch.
+
+Real und Sek sowie die beiden Schulhausbereiche bleiben strikt getrennt. Für alle sechs Fächer gelten dieselben disjunkten Klassenpaare mit höchstens zwei Klassen je Block. Klassenreine Gruppen innerhalb eines Blocks bleiben möglich. Für die aktuelle Konstellation ist S2a + S2c vorgegeben. Offene Zuteilungen können nur in bestehende passende Gruppen mit tatsächlichen Mitschülerinnen und Mitschülern derselben Klasse verschoben werden; die maximale Gruppengrösse bleibt verbindlich.
+
+Nicht lösbare Fälle werden ausdrücklich offen ausgewiesen. Die Anwendung ist ein Planungswerkzeug; die pädagogische und organisatorische Prüfung bleibt bei der verantwortlichen Person.
