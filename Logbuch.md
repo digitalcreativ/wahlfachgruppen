@@ -231,6 +231,16 @@ Für realistischere Testläufe verteilte ich die 160 fiktiven SuS neu: R1a 12, R
 
 Die erneute Import- und Einteilungsprüfung bestätigt 160 eindeutige Personen in zehn Klassen und gültige Gruppengrenzen. Mit dieser Testverteilung entstehen 29 Gruppen und 31 offene Fachzuteilungen. Dies ersetzt die unmittelbar zuvor beschriebene gleichmässige Verteilung je Niveau. Die Anwendung selbst wurde hierfür nicht geändert.
 
+### Phase 23: Alle Einzellektionen manuell verschieben – 12. November 2026
+
+Beim Testen zeigte sich, dass die manuelle Auswahl bei den Einzellektionen noch auf das ursprünglich gewählte Fach beschränkt war. Ich öffnete deshalb die Auswahl für Musik, Deutsch plus und Informatik plus. Bereits zugeteilte SuS können nun zwischen bestehenden passenden Gruppen aller drei Einzelfächer verschoben werden. Auch offene Zuteilungen mit vorhandener Einzelfachwahl dürfen manuell einem anderen Einzelfach zugeteilt werden.
+
+Die Schutzregeln bleiben bestehen: Niveau, Schulhausbereich, festes Klassenpaar und maximale Gruppengrösse müssen passen. Für offene Zuteilungen werden weiterhin nur Gruppen angeboten, in denen bereits SuS derselben Klasse sind. Fällt die Quellgruppe durch das Verschieben unter die Mindestgrösse, erscheint eine Warnung. Die automatische Berechnung verwendet weiterhin die ursprüngliche feste Einzelfachwahl; manuelle Fachänderungen werden nicht als neue Wahl zurückgeschrieben.
+
+Die ursprüngliche Wahl bleibt im Plan zur Kontrolle erhalten. Abweichende Einzelfachzuteilungen werden im CSV-Export als «Manuell zugeteilt» ausgewiesen. Auch die Planprüfung beim Wiederöffnen wurde angepasst, damit eine gültige manuelle Fachänderung erhalten bleibt. Die Klassen-/Fachübersicht aktualisiert die tatsächliche Zuordnung und weist auf Abweichungen von der ursprünglichen Wahl hin.
+
+Die Prüfungen decken alle sechs möglichen Wechsel zwischen den drei Einzelfächern ab. Die Auswahl, das tatsächliche Verschieben, die unveränderte ursprüngliche Wahl, die Warnung bei unterschrittenem Minimum und das Wiederöffnen einer gespeicherten manuellen Fachänderung wurden erfolgreich geprüft. Die bisherigen Import-, Einteilungs- und Schutzregelprüfungen bleiben erfolgreich.
+
 ## 3. Einsatz von künstlicher Intelligenz
 
 Ich setzte KI als Unterstützung bei der Konzeption, Programmierung, Fehlersuche und sprachlichen Überarbeitung ein. Dabei formulierte ich die Anforderungen und prüfte die vorgeschlagenen Lösungen anhand der schulischen Einteilungsregeln. Anpassungen wurden schrittweise vorgenommen und mit den vorhandenen Testdateien beziehungsweise Beispieldaten kontrolliert.
@@ -278,5 +288,7 @@ Zusätzlich zeigt der aufklappbare Bereich «Klassen & Fächer» aus den vorhand
 Die Grenzwerte sind einstellbar. Beim Öffnen eines gespeicherten Plans werden dessen Einstellungen übernommen; die aktuellen Standardwerte ersetzen bestehende gespeicherte Werte nicht automatisch.
 
 Real und Sek sowie die beiden Schulhausbereiche bleiben strikt getrennt. Für alle sechs Fächer gelten dieselben disjunkten Klassenpaare mit höchstens zwei Klassen je Block. Klassenreine Gruppen innerhalb eines Blocks bleiben möglich. Zwei klassenreine Gruppen desselben Fachs im selben festen Klassenpaar werden jedoch zusammengeführt, wenn ihre gemeinsame Grösse das Maximum nicht überschreitet. Dies gilt auch für passende Teilgruppen. Für die aktuelle Konstellation ist S2a + S2c vorgegeben. Offene Zuteilungen können nur in bestehende passende Gruppen mit tatsächlichen Mitschülerinnen und Mitschülern derselben Klasse verschoben werden; die maximale Gruppengrösse bleibt verbindlich.
+
+Bei den Einzellektionen sind manuelle Wechsel zwischen passenden bestehenden Gruppen von Musik, Deutsch plus und Informatik plus möglich, unabhängig von der ursprünglichen festen Wahl. Diese bleibt für die automatische Berechnung und Kontrolle erhalten; manuelle Änderungen werden gespeichert und exportiert.
 
 Nicht lösbare Fälle werden ausdrücklich offen ausgewiesen. Die Anwendung ist ein Planungswerkzeug; die pädagogische und organisatorische Prüfung bleibt bei der verantwortlichen Person.
