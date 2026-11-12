@@ -241,6 +241,18 @@ Die ursprüngliche Wahl bleibt im Plan zur Kontrolle erhalten. Abweichende Einze
 
 Die Prüfungen decken alle sechs möglichen Wechsel zwischen den drei Einzelfächern ab. Die Auswahl, das tatsächliche Verschieben, die unveränderte ursprüngliche Wahl, die Warnung bei unterschrittenem Minimum und das Wiederöffnen einer gespeicherten manuellen Fachänderung wurden erfolgreich geprüft. Die bisherigen Import-, Einteilungs- und Schutzregelprüfungen bleiben erfolgreich.
 
+### Phase 24: Zweitwahlen auf begründete Notfälle beschränken – 12. November 2026
+
+Bei der Erprobung stellte ich fest, dass zu viele Zweitwahlen verwendet wurden. Die bisherige Suche priorisierte möglichst wenige offene Fachzuteilungen vor möglichst wenigen Zweitwahlen. Da die Klassenpaare über alle sechs Fächer gemeinsam bestimmt werden, konnte eine Änderung der Gestaltungswahl dabei auch indirekt eine bessere Einzelfachkonstellation ermöglichen. Dies entsprach nicht dem gewünschten starken Vorrang der Erstwahl.
+
+Ich liess die Suche in zwei Schritte trennen. Zuerst wird ausschliesslich mit Erstwahlen gerechnet. Die dabei gewählten Klassenblöcke bleiben für den anschliessenden Einsatz von Zweitwahlen fest. Innerhalb dieser Blöcke werden Zweitwahlen nur zur Lösung konkreter offener Gestaltungszuteilungen geprüft: zum Schliessen einer Lücke von einer oder zwei Personen, zum Abbau einer kleinen Überzahl oder zur Zuteilung aus einem Fach, dessen gesamte Wahlzahl im Block unter der Mindestgrösse liegt.
+
+Aus einem Fach, das nach seinen ursprünglichen Wahlzahlen grundsätzlich eine Gruppe bilden kann, werden höchstens zwei Personen pro Block auf ihre Zweitwahl umgeteilt. Bei einem vollständig unterbesetzten Fach kann dagegen eine grössere Anzahl seiner Wahlen auf die jeweilige Zweitwahl wechseln, wenn dies die offenen Fälle reduziert. Reparaturen mit zwei Personen werden gemeinsam geprüft, damit eine Mindestzahl auch dann erreicht werden kann, wenn ein einzelner Wechsel noch nicht genügt. Offene Gestaltungszuteilungen dürfen in keinem anderen Fach zunehmen. Zweitwahlen dienen damit weder der blossen Verringerung der Gruppenzahl noch der Verbesserung der Einzelfachzuteilungen. Wenn keine solche Reparatur möglich ist, bleiben Fälle bewusst offen.
+
+Die automatisierten Prüfungen bestätigen Reparaturen mit einer und zwei Personen, die Zuteilung aus einem nicht zustande kommenden kleinen Fach, den Ausgleich einer kleinen Überzahl bei individuell gesetzten Gruppengrenzen sowie den Schutz bereits möglicher Gruppen. Ein Test mit offenen Einzelfächern und vollständig möglichen Gestaltungs-Erstwahlen bestätigt, dass hierfür keine Zweitwahlen eingesetzt und keine Klassenpaare nachträglich verändert werden.
+
+Mit der aktuellen Forms-Testdatei mit 160 fiktiven SuS werden vier Zweitwahlen verwendet; alle Gestaltungszuteilungen sind gelöst. Es entstehen 30 Gruppen und 28 offene Einzelfachzuteilungen. Die eingebauten 160 Beispieldaten ergeben 32 Gruppen und 54 offene Fachzuteilungen. Die übrigen Import-, Verschiebe- und Schutzregelprüfungen bleiben erfolgreich. Die Suche bleibt begrenzt und heuristisch; offene Fälle sind weiterhin fachlich zu prüfen.
+
 ## 3. Einsatz von künstlicher Intelligenz
 
 Ich setzte KI als Unterstützung bei der Konzeption, Programmierung, Fehlersuche und sprachlichen Überarbeitung ein. Dabei formulierte ich die Anforderungen und prüfte die vorgeschlagenen Lösungen anhand der schulischen Einteilungsregeln. Anpassungen wurden schrittweise vorgenommen und mit den vorhandenen Testdateien beziehungsweise Beispieldaten kontrolliert.
@@ -290,5 +302,7 @@ Die Grenzwerte sind einstellbar. Beim Öffnen eines gespeicherten Plans werden d
 Real und Sek sowie die beiden Schulhausbereiche bleiben strikt getrennt. Für alle sechs Fächer gelten dieselben disjunkten Klassenpaare mit höchstens zwei Klassen je Block. Klassenreine Gruppen innerhalb eines Blocks bleiben möglich. Zwei klassenreine Gruppen desselben Fachs im selben festen Klassenpaar werden jedoch zusammengeführt, wenn ihre gemeinsame Grösse das Maximum nicht überschreitet. Dies gilt auch für passende Teilgruppen. Für die aktuelle Konstellation ist S2a + S2c vorgegeben. Offene Zuteilungen können nur in bestehende passende Gruppen mit tatsächlichen Mitschülerinnen und Mitschülern derselben Klasse verschoben werden; die maximale Gruppengrösse bleibt verbindlich.
 
 Bei den Einzellektionen sind manuelle Wechsel zwischen passenden bestehenden Gruppen von Musik, Deutsch plus und Informatik plus möglich, unabhängig von der ursprünglichen festen Wahl. Diese bleibt für die automatische Berechnung und Kontrolle erhalten; manuelle Änderungen werden gespeichert und exportiert.
+
+Die automatische Suche bildet zunächst Klassenblöcke ausschliesslich nach Erstwahlen. Zweitwahlen werden anschliessend nur für gezielte Notfallkorrekturen innerhalb derselben Blöcke eingesetzt: bei kleinen Unter- oder Überzahlen oder bei nicht zustande kommenden kleinen Gestaltungsfächern. Bereits mögliche Fachgruppen dürfen dabei nicht durch neue offene Fälle beeinträchtigt werden.
 
 Nicht lösbare Fälle werden ausdrücklich offen ausgewiesen. Die Anwendung ist ein Planungswerkzeug; die pädagogische und organisatorische Prüfung bleibt bei der verantwortlichen Person.
