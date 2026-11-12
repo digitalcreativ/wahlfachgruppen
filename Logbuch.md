@@ -5,7 +5,7 @@
 **Ausbildung:** CAS Bildung im digitalen Wandel – KI-Modul  
 **Projektkontext:** Schulen Baar  
 **Verfasserin:** Claudia Bürgisser  
-**Bearbeitungsstand:** 10. November 2026
+**Bearbeitungsstand:** 12. November 2026
 
 > Hinweis: Die früheren Entwicklungsschritte wurden anhand des aktuellen Projektstands und der vorhandenen Dateien rückblickend zusammengefasst. Die späteren Einträge dokumentieren die Anpassungen aus der laufenden Erprobung. Frühere Regeln und Testergebnisse beschreiben den damaligen Stand; die aktuell gültigen Vorgaben sind in Abschnitt 6 zusammengefasst.
 
@@ -191,6 +191,46 @@ Die Übersicht aktualisiert sich bei einer neuen Berechnung, bei Änderungen der
 
 Die automatisierten Prüfungen wurden mit beiden ursprünglichen CSV-Testdateien zusammen durchgeführt (159 SuS). Geprüft wurden Wahl- und Zuordnungszahlen, die Anzeige vor und nach der Berechnung, fehlende Wahlen, Engpässe, volle Gruppen, die Aktualisierung nach manueller Zuteilung, die Erkennung doppelter Zuordnungen, der Klassenfilter und die HTML-Ausgabe der Übersicht. Der Upload mehrerer Dateien bleibt vorhanden. Eine visuelle Browserprüfung wurde in dieser Umgebung nicht durchgeführt.
 
+### Phase 20: Microsoft-Forms-Antworten direkt importieren – 12. November 2026
+
+Für die künftige Erfassung der Fachwahlen erstellte ich mit Unterstützung der KI ein Microsoft-Forms-Formular. Die SuS wählen ihre Klasse, eine erste und eine andere zweite Priorität in den Gestaltungsfächern sowie ein festes Einzelfach. Über Verzweigungen gelangt jede Erstwahl zu einer passenden Zweitwahl-Frage. Für die namentliche Zuordnung wird die Einstellung «Namen aufzeichnen» verwendet; die Antworten werden auf eine Antwort pro Person beschränkt. Die Einrichtung im schulischen Microsoft-365-Konto erfolgt durch mich; die KI hat das Formular nicht direkt im Konto angelegt.
+
+Anhand eines bereinigten Excel-Testexports ergänzte ich den Import in der bestehenden Anwendung. Die Dateiauswahl akzeptiert nun neben den bisherigen CSV-Dateien auch Forms-Antworten im XLSX-Format. Eine zusätzliche Installation oder externe Bibliothek ist nicht nötig. Die Verarbeitung erfolgt weiterhin lokal im Browser. Die beiden bisherigen CSV-Testdateien bleiben einzeln und gemeinsam importierbar; auch das Forms-Format wird als CSV erkannt.
+
+Der Import berücksichtigt die tatsächlichen Spalten des Formulars: Name, Klassenfrage, Erstwahl, die drei verzweigten Zweitwahl-Spalten und das zusätzliche Einzelfach. Pro Antwort wird nur der zur Erstwahl passende Zweitwahl-Zweig übernommen. Enthalten andere Zweige noch Werte, werden diese nicht als zusätzliche Wahl interpretiert; stattdessen erscheint ein Importhinweis. Erst- und Zweitwahl müssen verschieden sein. Fehlende Angaben bleiben sichtbar, nicht erkannte Fach- oder Klassenangaben führen zu einer verständlichen Fehlermeldung.
+
+Klassenbezeichnungen wie «Sek 2a» werden als «S2a» übernommen. Real/Sek und der Schulhausbereich werden daraus abgeleitet; a/b/c gehören zu Schulhaus 1 und d/e/f zu Schulhaus 2. Der eingereichte Testexport enthielt «Sek 1a» und wurde entsprechend als «S1a» eingelesen. Die Jahrgangszahl wird nicht stillschweigend geändert. Für die reale Anmeldung der 2. Oberstufe müssen die Klassenoptionen im Formular daher passend eingerichtet sein.
+
+Der direkte XLSX-Import liest die erste Tabelle und benötigt einen aktuellen Browser mit Unterstützung der verwendeten Dekomprimierung. Andernfalls kann dieselbe Antwortdatei aus Excel als CSV UTF-8 gespeichert und eingelesen werden. Die Verarbeitung übernimmt Zellwerte; Formeln und externe Verknüpfungen werden nicht ausgeführt. Umfangreiche, beschädigte oder kennwortgeschützte Dateien werden abgewiesen.
+
+Die eingereichte Testdatei wurde erfolgreich mit einer Antwort eingelesen: Technisches Gestalten als Erstwahl, Textiles Gestalten als Zweitwahl und Musik als Einzelfach. Zusätzliche synthetische Prüfungen in `verify-forms.cjs` decken alle drei Zweitwahl-Zweige, veraltete Werte in anderen Zweigen, fehlende Namen und Wahlen, Klassen- und Niveauzuordnung, doppelte Antwort-IDs, Forms-CSV sowie unterschiedliche XLSX-Speicherformen ab. Die bestehenden Prüfungen in `verify.cjs` bleiben erfolgreich. Eine visuelle Prüfung des Uploads im Browser wurde nicht durchgeführt. Eine direkte Verbindung zum schulischen SharePoint ist damit noch nicht eingerichtet: Die Forms-Antwortdatei wird weiterhin heruntergeladen und anschliessend in das Einteilungstool importiert.
+
+### Phase 21: Passende klassenreine Gruppen zusammenführen – 12. November 2026
+
+Beim Testen zeigte sich, dass zwei klassenreine Gruppen teilweise getrennt blieben, obwohl ihre gemeinsame Grösse innerhalb der erlaubten Gruppengrenzen lag. Ich präzisierte deshalb die Priorität: Innerhalb desselben festen Klassenpaars werden solche Gruppen desselben Fachs zusammengeführt, wenn die Summe das jeweilige Maximum nicht überschreitet. Die Regel gilt für alle sechs Fächer und beide Niveaus. Sie ersetzt in diesem Fall den bisherigen Vorrang klassenreiner Gruppen.
+
+Die Prüfung berücksichtigt auch kleinere Teilgruppen, wenn eine Klasse aufgrund ihrer Grösse bereits mehrere Gruppen benötigt. Klassenpaare, Schulhausgrenzen und die Trennung von Real und Sek bleiben verbindlich. Gruppen oberhalb des Maximums werden nicht zusammengeführt. Die Änderung greift bei einer neuen Berechnung; vorhandene gespeicherte Einteilungen müssen dafür neu berechnet werden.
+
+Die Prüfungen bestätigten die Zusammenführung bei allen sechs Fächern, bei Real und Sek, genau am Maximum sowie bei passenden Teilgruppen. Ein Gegenbeispiel mit insgesamt 20 BG-Wahlen bei einem Maximum von 18 bleibt auf zwei Gruppen verteilt. Mit der Forms-Testdatei mit 160 fiktiven SuS entstehen neu 24 statt 40 Gruppen, ohne offene Zuteilungen und mit vollständig erfüllten Erstwünschen. Die 160 integrierten Beispieldaten ergeben unter den aktuellen Regeln 32 Gruppen und 53 offene Fachzuteilungen. Auch die bisherigen Import- und Einteilungsprüfungen bleiben erfolgreich.
+
+### Phase 22: Forms-Testdatei an zehn Klassen ohne c-Klassen anpassen – 12. November 2026
+
+Für die kommende Klassenkonstellation passte ich die Forms-Testdatei auf S1a, S1b, S1d, S1e, S1f und die entsprechenden fünf Realklassen an. Sie enthält weiterhin 160 fiktive SuS, nun je 16 pro Klasse. C-Klassen sind nicht mehr enthalten. Alle Personen haben unterschiedliche Erst- und Zweitwahlen sowie eine feste Einzelfachwahl. Der Import behält die ausdrücklich gewünschten Klassenbezeichnungen des ersten Jahrgangs bei.
+
+Die Prüfung bestätigt zehn Klassen, 80 Real- und 80 Sek-SuS sowie 64 Personen in Schulhaus 1 und 96 in Schulhaus 2. Mit den aktuellen Standardgrenzen entstehen 32 Gruppen; alle 160 Erstwahlen werden erfüllt. Bei den Einzellektionen bleiben 16 Zuteilungen offen: Bei je drei Klassen pro Niveau in Schulhaus 2 bleibt innerhalb fester Zweierpaare eine Klasse allein; ihre vier Musik- und vier Deutsch-plus-Wahlen unterschreiten jeweils das Minimum von acht. Die neuen offenen Fälle sind somit eine Folge der veränderten Testkonstellation. Die Einteilungsregeln und die bisherigen Testdateien wurden dafür nicht geändert.
+
+### Präzisierung der Testklassengrössen – 12. November 2026
+
+Die anschliessend präzisierten Klassengrenzen betragen höchstens 14 SuS in Real und 20 in Sek. Ich passte deshalb ausschliesslich die Forms-Testdaten auf fünf Realklassen mit je 12 SuS und fünf Sekklassen mit je 20 SuS an. Damit bleiben zehn Klassen und insgesamt 160 Personen erhalten: 60 Real- und 100 Sek-SuS. Die Klassenbuchstaben a/b/d/e/f und die Schulhauszuordnung bleiben bestehen. Dies ersetzt die zuvor gleichmässige Verteilung von 16 Personen pro Klasse.
+
+Import und vollständige, eindeutige Fachzuordnung wurden erneut geprüft. Die neue Verteilung der Fachwahlen führt bei unveränderten Fachgruppengrenzen und festen Klassenpaaren zu 25 Gruppen und 52 offenen Fachzuteilungen. Die Testdaten enthalten dabei vollständige Erst-, Zweit- und Einzelfachwahlen; offene Zuteilungen entstehen aufgrund der organisatorischen Gruppengrenzen. Die Klassengrenzen wurden nicht als neue Fachgruppengrenzen übernommen.
+
+### Testklassengrössen und Fachwahlen variieren – 12. November 2026
+
+Für realistischere Testläufe verteilte ich die 160 fiktiven SuS neu: R1a 12, R1b 14, R1d 11, R1e 13, R1f 14 sowie S1a 20, S1b 18, S1d 19, S1e 20 und S1f 19. Damit enthält die Forms-Testdatei 64 Real- und 96 Sek-SuS. Die Maximalgrössen von 14 beziehungsweise 20 werden eingehalten; c-Klassen bleiben ausgeschlossen. Auch die Verteilung der Gestaltungs- und Einzelfachwahlen variiert zwischen den Klassen. Alle Erst- und Zweitwahlen sind vollständig und verschieden.
+
+Die erneute Import- und Einteilungsprüfung bestätigt 160 eindeutige Personen in zehn Klassen und gültige Gruppengrenzen. Mit dieser Testverteilung entstehen 29 Gruppen und 31 offene Fachzuteilungen. Dies ersetzt die unmittelbar zuvor beschriebene gleichmässige Verteilung je Niveau. Die Anwendung selbst wurde hierfür nicht geändert.
+
 ## 3. Einsatz von künstlicher Intelligenz
 
 Ich setzte KI als Unterstützung bei der Konzeption, Programmierung, Fehlersuche und sprachlichen Überarbeitung ein. Dabei formulierte ich die Anforderungen und prüfte die vorgeschlagenen Lösungen anhand der schulischen Einteilungsregeln. Anpassungen wurden schrittweise vorgenommen und mit den vorhandenen Testdateien beziehungsweise Beispieldaten kontrolliert.
@@ -220,7 +260,7 @@ Für eine Weiterentwicklung würde ich strukturierte Tests mit echten, anonymisi
 
 ## 6. Aktueller Stand
 
-Die Anwendung liegt als eigenständige Datei `index.html` vor. Zwei anonymisierte Testdateien für die Schulhäuser Sennweid und Sternmatt stehen zur Verfügung. Der Funktionsumfang umfasst Import, Datenprüfung, automatische Gruppenbildung, manuelle Anpassung, getrennt dargestellte offene Doppel- und Einzelfachzuteilungen, CSV- und PDF-Export sowie das Sichern und Wiederöffnen eines Planungsstands. Die wiederholbaren Prüfungen sind in `verify.cjs` dokumentiert.
+Die Anwendung liegt als eigenständige Datei `index.html` vor. Zwei anonymisierte Testdateien für die Schulhäuser Sennweid und Sternmatt stehen zur Verfügung. Der Funktionsumfang umfasst Import, Datenprüfung, automatische Gruppenbildung, manuelle Anpassung, getrennt dargestellte offene Doppel- und Einzelfachzuteilungen, CSV- und PDF-Export sowie das Sichern und Wiederöffnen eines Planungsstands. Die wiederholbaren Prüfungen sind in `verify.cjs` und für den Forms-Import in `verify-forms.cjs` dokumentiert. Zusätzlich zu den bisherigen CSV-Listen werden heruntergeladene Microsoft-Forms-Antworten als XLSX oder CSV unterstützt. Eine direkte SharePoint-Verbindung besteht nicht.
 
 Aktuell gelten folgende Standardgrenzen:
 
@@ -237,6 +277,6 @@ Zusätzlich zeigt der aufklappbare Bereich «Klassen & Fächer» aus den vorhand
 
 Die Grenzwerte sind einstellbar. Beim Öffnen eines gespeicherten Plans werden dessen Einstellungen übernommen; die aktuellen Standardwerte ersetzen bestehende gespeicherte Werte nicht automatisch.
 
-Real und Sek sowie die beiden Schulhausbereiche bleiben strikt getrennt. Für alle sechs Fächer gelten dieselben disjunkten Klassenpaare mit höchstens zwei Klassen je Block. Klassenreine Gruppen innerhalb eines Blocks bleiben möglich. Für die aktuelle Konstellation ist S2a + S2c vorgegeben. Offene Zuteilungen können nur in bestehende passende Gruppen mit tatsächlichen Mitschülerinnen und Mitschülern derselben Klasse verschoben werden; die maximale Gruppengrösse bleibt verbindlich.
+Real und Sek sowie die beiden Schulhausbereiche bleiben strikt getrennt. Für alle sechs Fächer gelten dieselben disjunkten Klassenpaare mit höchstens zwei Klassen je Block. Klassenreine Gruppen innerhalb eines Blocks bleiben möglich. Zwei klassenreine Gruppen desselben Fachs im selben festen Klassenpaar werden jedoch zusammengeführt, wenn ihre gemeinsame Grösse das Maximum nicht überschreitet. Dies gilt auch für passende Teilgruppen. Für die aktuelle Konstellation ist S2a + S2c vorgegeben. Offene Zuteilungen können nur in bestehende passende Gruppen mit tatsächlichen Mitschülerinnen und Mitschülern derselben Klasse verschoben werden; die maximale Gruppengrösse bleibt verbindlich.
 
 Nicht lösbare Fälle werden ausdrücklich offen ausgewiesen. Die Anwendung ist ein Planungswerkzeug; die pädagogische und organisatorische Prüfung bleibt bei der verantwortlichen Person.
