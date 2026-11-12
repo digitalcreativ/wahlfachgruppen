@@ -253,6 +253,18 @@ Die automatisierten Prüfungen bestätigen Reparaturen mit einer und zwei Person
 
 Mit der aktuellen Forms-Testdatei mit 160 fiktiven SuS werden vier Zweitwahlen verwendet; alle Gestaltungszuteilungen sind gelöst. Es entstehen 30 Gruppen und 28 offene Einzelfachzuteilungen. Die eingebauten 160 Beispieldaten ergeben 32 Gruppen und 54 offene Fachzuteilungen. Die übrigen Import-, Verschiebe- und Schutzregelprüfungen bleiben erfolgreich. Die Suche bleibt begrenzt und heuristisch; offene Fälle sind weiterhin fachlich zu prüfen.
 
+### Phase 25: Klassenblöcke mit bis zu drei Klassen zulassen – 12. November 2026
+
+Die organisatorischen Vorgaben wurden erweitert: Innerhalb eines Schulhauses dürfen Gruppen SuS aus bis zu drei Klassen desselben Niveaus enthalten. In der aktuellen Konstellation sind somit R1a + R1b und R1d + R1e + R1f sowie entsprechend S1a + S1b und S1d + S1e + S1f möglich. Klassenreine Gruppen und kleinere Kombinationen bleiben ebenfalls zulässig. Die Trennung von Real und Sek und zwischen den beiden Schulhausbereichen bleibt verbindlich.
+
+Ich erweiterte die gemeinsame Blocksuche über alle sechs Fächer auf Einzel-, Zweier- und Dreierblöcke. Die frühere standardmässig festgelegte Paarung S2a + S2c entfällt. Dadurch kann auch eine dritte Klasse zur Mindestgrösse eines Fachs beitragen. Die Maximalgrössen bleiben unverändert. Passende Gruppen innerhalb eines Blocks werden weiterhin zusammengeführt, wenn die gemeinsame Grösse das Maximum nicht überschreitet.
+
+Die erste Berechnung erfolgt weiterhin nur mit Erstwahlen. Die daraus gebildeten Klassenblöcke bleiben bei anschliessenden Notfallkorrekturen durch Zweitwahlen fest. Auch die manuellen Schutzregeln gelten weiter; bei offenen Zuteilungen werden nur Gruppen mit tatsächlichen Mitschülerinnen und Mitschülern derselben Klasse angeboten. Die Prüfung und Wiederherstellung gespeicherter Pläne berücksichtigt nun auch Dreierblöcke und erhält deren Zugehörigkeit über alle Fächer hinweg.
+
+Geprüft wurden Gruppen aus drei Klassen in allen sechs Fächern und bei beiden Niveaus, die Gruppengrenzen, der Ausschluss schulhaus- oder niveauübergreifender Gruppen, das Verbot von Blöcken aus mehr als drei Klassen und das Wiederöffnen eines gespeicherten Dreierblocks. Die bisherigen Prüfungen zu Erstwahlvorrang, Notfall-Zweitwahlen, Import und manuellen Verschiebungen bleiben erfolgreich.
+
+Mit der aktuellen Forms-Testdatei entstehen 28 Gruppen und nur noch sieben offene Fachzuteilungen statt zuvor 28. Die Gestaltungs-Erstwahlen können vollständig erfüllt werden. Die integrierten 160 Beispieldaten ergeben 32 Gruppen ohne offene Fachzuteilungen. Die früheren Ergebnisse und Beschränkungen auf feste Zweierpaare beschreiben historische Zwischenstände.
+
 ## 3. Einsatz von künstlicher Intelligenz
 
 Ich setzte KI als Unterstützung bei der Konzeption, Programmierung, Fehlersuche und sprachlichen Überarbeitung ein. Dabei formulierte ich die Anforderungen und prüfte die vorgeschlagenen Lösungen anhand der schulischen Einteilungsregeln. Anpassungen wurden schrittweise vorgenommen und mit den vorhandenen Testdateien beziehungsweise Beispieldaten kontrolliert.
@@ -299,7 +311,7 @@ Zusätzlich zeigt der aufklappbare Bereich «Klassen & Fächer» aus den vorhand
 
 Die Grenzwerte sind einstellbar. Beim Öffnen eines gespeicherten Plans werden dessen Einstellungen übernommen; die aktuellen Standardwerte ersetzen bestehende gespeicherte Werte nicht automatisch.
 
-Real und Sek sowie die beiden Schulhausbereiche bleiben strikt getrennt. Für alle sechs Fächer gelten dieselben disjunkten Klassenpaare mit höchstens zwei Klassen je Block. Klassenreine Gruppen innerhalb eines Blocks bleiben möglich. Zwei klassenreine Gruppen desselben Fachs im selben festen Klassenpaar werden jedoch zusammengeführt, wenn ihre gemeinsame Grösse das Maximum nicht überschreitet. Dies gilt auch für passende Teilgruppen. Für die aktuelle Konstellation ist S2a + S2c vorgegeben. Offene Zuteilungen können nur in bestehende passende Gruppen mit tatsächlichen Mitschülerinnen und Mitschülern derselben Klasse verschoben werden; die maximale Gruppengrösse bleibt verbindlich.
+Real und Sek sowie die beiden Schulhausbereiche bleiben strikt getrennt. Für alle sechs Fächer gelten gemeinsame disjunkte Klassenblöcke mit höchstens drei Klassen desselben Schulhauses und Niveaus. Klassenreine Gruppen innerhalb eines Blocks bleiben möglich. Passende Gruppen desselben Fachs im selben Klassenblock werden jedoch zusammengeführt, wenn ihre gemeinsame Grösse das Maximum nicht überschreitet. Dies gilt auch für passende Teilgruppen. Die frühere feste Vorgabe S2a + S2c entfällt. In der aktuellen Konstellation sind a/b sowie d/e/f innerhalb desselben Niveaus und Schulhauses kombinierbar. Offene Zuteilungen können nur in bestehende passende Gruppen mit tatsächlichen Mitschülerinnen und Mitschülern derselben Klasse verschoben werden; die maximale Gruppengrösse bleibt verbindlich.
 
 Bei den Einzellektionen sind manuelle Wechsel zwischen passenden bestehenden Gruppen von Musik, Deutsch plus und Informatik plus möglich, unabhängig von der ursprünglichen festen Wahl. Diese bleibt für die automatische Berechnung und Kontrolle erhalten; manuelle Änderungen werden gespeichert und exportiert.
 
