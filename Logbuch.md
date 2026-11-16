@@ -3,9 +3,10 @@
 ## Projekt: Digitale Einteilung der Wahlfachgruppen 2. Oberstufe
 
 **Ausbildung:** CAS Bildung im digitalen Wandel – KI-Modul  
-**Projektkontext:** Schulen Baar  
+**Projektkontext:** Schulen Baar, 2. Oberstufe, Schuljahr 2026/27  
 **Verfasserin:** Claudia Bürgisser  
-**Bearbeitungsstand:** 12. November 2026
+**Projektbeginn:** Anfang Oktober 2026  
+**Bearbeitungsstand:** 16. November 2026
 
 > Hinweis: Die früheren Entwicklungsschritte wurden anhand des aktuellen Projektstands und der vorhandenen Dateien rückblickend zusammengefasst. Die späteren Einträge dokumentieren die Anpassungen aus der laufenden Erprobung. Frühere Regeln und Testergebnisse beschreiben den damaligen Stand; die aktuell gültigen Vorgaben sind in Abschnitt 6 zusammengefasst.
 
@@ -15,11 +16,32 @@ Die Einteilung der Schülerinnen und Schüler in die Wahlfachgruppen der 2. Ober
 
 Ziel meines Projekts war deshalb die Entwicklung eines einfachen digitalen Werkzeugs, das aus vorhandenen Schülerlisten automatisch einen Vorschlag für die Wahlfachgruppen erstellt. Das Werkzeug sollte ohne Installation und ohne Übertragung personenbezogener Daten an einen externen Server funktionieren. Gleichzeitig war mir wichtig, dass die automatisch erzeugte Lösung von einer Person überprüft und manuell angepasst werden kann.
 
+Als Grundlage dienten die Daten des laufenden Schuljahrs 2026/27. Daraus entwickelte ich einen Prototyp für die 2. Oberstufe, den ich anschliessend mit neu generierten Datensätzen testete. Ziel ist, dass das Werkzeug im Januar 2027 für die Einteilung der künftigen Wahlfachgruppen eingesetzt werden kann.
+
+Wichtig war mir zudem, dass das Werkzeug unabhängig vom Schuljahr funktioniert und nicht jedes Jahr neu programmiert werden muss. Es enthält deshalb keine fest eingetragenen Schuljahre oder Schülerlisten: Klassen und Fachwahlen werden jeweils aus den importierten Daten übernommen, und die Gruppengrössen lassen sich bei Bedarf anpassen.
+
 ## 2. Entwicklungsprozess
+
+### Geplantes Vorgehen
+
+Zu Beginn legte ich folgende Arbeitsschritte fest:
+
+- Treffen mit der Stundenplanerin der Schulen Baar
+- Fakten austauschen und Materialien sammeln: bestehende Formulare, Listen und Zuteilungen des laufenden Schuljahres
+- Prototyp durch Vibe-Coding erstellen, inklusive Anwendung (`index.html`) und Logbuch
+- Prototyp mit den Listen des laufenden Schuljahrs 2026/27 testen
+- Zwischengespräch mit der Stundenplanerin, um ein erstes Feedback einzuholen
+- Prototyp anpassen und verbessern
+- Verschiedene Testlisten von der KI erstellen lassen, damit das Werkzeug auch mit anderen Daten geprüft werden kann
+- Prototyp fertigstellen, gegebenenfalls das Layout anpassen und den Schulen Baar zur Verfügung stellen
+- Eine Forms-Umfrage passend zum Werkzeug erstellen
+- Forms-Resultate testen und Testklassen generieren lassen
+
+Die folgenden Phasen dokumentieren, wie diese Schritte umgesetzt wurden und welche Anpassungen sich dabei ergaben.
 
 ### Phase 1: Anforderungen klären und Daten verstehen
 
-Zu Beginn analysierte ich, welche Angaben für die Einteilung notwendig sind. Dazu gehören Name, Klasse, Niveau, Schulhaus, Erst- und Zweitwahl für die Doppellektion sowie das gewählte Fach der Einzellektion.
+Zu Beginn traf ich mich mit der Stundenplanerin der Schulen Baar. Wir tauschten die wichtigsten Fakten zur bisherigen Einteilung aus, und ich sammelte die vorhandenen Materialien: bestehende Formulare, Listen und Zuteilungen des laufenden Schuljahres. Auf dieser Grundlage analysierte ich, welche Angaben für die Einteilung notwendig sind. Dazu gehören Name, Klasse, Niveau, Schulhaus, Erst- und Zweitwahl für die Doppellektion sowie das gewählte Fach der Einzellektion.
 
 Ich legte folgende Grundregeln fest:
 
@@ -35,7 +57,7 @@ Eine besondere Herausforderung waren unterschiedliche CSV-Strukturen. Neben eine
 
 ### Phase 2: Erster funktionsfähiger Prototyp
 
-Ich entwickelte eine eigenständige Browseranwendung in einer HTML-Datei. Sie kann lokal geöffnet werden und verarbeitet alle Daten nur im Arbeitsspeicher des Browser-Tabs. Dadurch ist keine Installation nötig und die Daten bleiben auf dem verwendeten Gerät.
+Den Prototyp erstellte ich mit ChatGPT durch Vibe-Coding: Ich beschrieb die gewünschten Funktionen und Regeln in eigenen Worten, die KI setzte sie in Programmcode um, und ich prüfte und verfeinerte das Ergebnis im Dialog. So entstand eine eigenständige Browseranwendung in einer HTML-Datei. Sie kann lokal geöffnet werden und verarbeitet alle Daten nur im Arbeitsspeicher des Browser-Tabs. Dadurch ist keine Installation nötig und die Daten bleiben auf dem verwendeten Gerät.
 
 Der erste Prototyp enthielt folgende Funktionen:
 
@@ -71,6 +93,17 @@ Für die praktische Verwendung ergänzte ich verschiedene Ausgabemöglichkeiten:
 
 Manuelle Änderungen werden in den Export übernommen. Ausserdem enthält die Oberfläche Hinweise für den Fall, dass ein Browser einen automatischen Download blockiert.
 
+### Zwischengespräch mit der Stundenplanerin – 30. Oktober 2026
+
+Nach den ersten Tests mit den Listen des laufenden Schuljahres stellte ich der Stundenplanerin der Schulen Baar den Prototyp vor und holte ein erstes Feedback ein. Wir besprachen vor allem organisatorische Details:
+
+- die zulässigen Gruppengrössen der einzelnen Fächer,
+- welche Klassen miteinander gemischt werden dürfen,
+- dass die Schulhäuser bei der Einteilung immer getrennt bleiben müssen,
+- dass die Fachwahlen künftig allenfalls über eine Forms-Umfrage erhoben werden.
+
+Diese Rückmeldungen bildeten die Grundlage für mehrere der folgenden Anpassungen: die fachbezogenen und nach Real und Sek getrennten Gruppengrössen (Phasen 7, 8 und 15), die Regeln zur Mischung von Klassen in festen Klassenblöcken (Phasen 14 und 25), die verbindliche Schulhaustrennung (Phase 17) sowie das Forms-Formular mit dem passenden Import (Phase 20). Das Gespräch zeigte mir, wie wichtig der Austausch mit der Person ist, die den Prozess in der Praxis verantwortet: Viele dieser Regeln waren aus den vorhandenen Listen allein nicht ersichtlich.
+
 ### Phase 6: Offene Fachzuteilungen erweitern – 3. November 2026
 
 Beim praktischen Prüfen zeigte sich, dass offene Doppellektions-Zuteilungen zu stark eingeschränkt waren. Im Auswahlmenü erschienen nur Gruppen aus der Erst- oder Zweitwahl der betreffenden Person. Dadurch konnte in einem offenen Ausnahmefall der dritte Fachbereich nicht manuell gewählt werden.
@@ -103,7 +136,7 @@ Ausserdem vereinheitlichte ich die Schrift der Überschriften mit der Schrift de
 
 ### Phase 10: Farbkonzept, Veröffentlichung und inklusive Sprache – 5. November 2026
 
-Ich passte das Erscheinungsbild an das Farbkonzept der Schulen Baar an. Blau dient nun als Hauptfarbe, Orange beziehungsweise Gelb als Akzentfarbe. Weisse und hellgraue Flächen sowie eine dunkle, neutrale Schrift sorgen für Übersichtlichkeit. Tabellenköpfe, aktive Filter, Schaltflächen und Hinweise wurden farblich aufeinander abgestimmt.
+Mit Unterstützung von ChatGPT passte ich das Erscheinungsbild an das Farbkonzept der Schulen Baar an. Blau dient nun als Hauptfarbe, Orange beziehungsweise Gelb als Akzentfarbe. Weisse und hellgraue Flächen sowie eine dunkle, neutrale Schrift sorgen für Übersichtlichkeit. Tabellenköpfe, aktive Filter, Schaltflächen und Hinweise wurden farblich aufeinander abgestimmt.
 
 Anschliessend richtete ich für das Projekt ein GitHub-Repository ein und veröffentlichte die Anwendung mit GitHub Pages. Damit kann das Werkzeug über einen Weblink direkt im Browser aufgerufen werden. Eine `.nojekyll`-Datei kennzeichnet das Projekt als statische Webseite und unterstützt die automatische Bereitstellung nach jedem Push auf den Hauptbranch.
 
@@ -193,7 +226,7 @@ Die automatisierten Prüfungen wurden mit beiden ursprünglichen CSV-Testdateien
 
 ### Phase 20: Microsoft-Forms-Antworten direkt importieren – 12. November 2026
 
-Für die künftige Erfassung der Fachwahlen erstellte ich mit Unterstützung der KI ein Microsoft-Forms-Formular. Die SuS wählen ihre Klasse, eine erste und eine andere zweite Priorität in den Gestaltungsfächern sowie ein festes Einzelfach. Über Verzweigungen gelangt jede Erstwahl zu einer passenden Zweitwahl-Frage. Für die namentliche Zuordnung wird die Einstellung «Namen aufzeichnen» verwendet; die Antworten werden auf eine Antwort pro Person beschränkt. Die Einrichtung im schulischen Microsoft-365-Konto erfolgt durch mich; die KI hat das Formular nicht direkt im Konto angelegt.
+Für die künftige Erfassung der Fachwahlen erstellte ich mit Unterstützung von ChatGPT ein Microsoft-Forms-Formular. Die SuS wählen ihre Klasse, eine erste und eine andere zweite Priorität in den Gestaltungsfächern sowie ein festes Einzelfach. Über Verzweigungen gelangt jede Erstwahl zu einer passenden Zweitwahl-Frage. Für die namentliche Zuordnung wird die Einstellung «Namen aufzeichnen» verwendet; die Antworten werden auf eine Antwort pro Person beschränkt. Die Einrichtung im schulischen Microsoft-365-Konto erfolgt durch mich; die KI hat das Formular nicht direkt im Konto angelegt.
 
 Anhand eines bereinigten Excel-Testexports ergänzte ich den Import in der bestehenden Anwendung. Die Dateiauswahl akzeptiert nun neben den bisherigen CSV-Dateien auch Forms-Antworten im XLSX-Format. Eine zusätzliche Installation oder externe Bibliothek ist nicht nötig. Die Verarbeitung erfolgt weiterhin lokal im Browser. Die beiden bisherigen CSV-Testdateien bleiben einzeln und gemeinsam importierbar; auch das Forms-Format wird als CSV erkannt.
 
@@ -204,6 +237,8 @@ Klassenbezeichnungen wie «Sek 2a» werden als «S2a» übernommen. Real/Sek und
 Der direkte XLSX-Import liest die erste Tabelle und benötigt einen aktuellen Browser mit Unterstützung der verwendeten Dekomprimierung. Andernfalls kann dieselbe Antwortdatei aus Excel als CSV UTF-8 gespeichert und eingelesen werden. Die Verarbeitung übernimmt Zellwerte; Formeln und externe Verknüpfungen werden nicht ausgeführt. Umfangreiche, beschädigte oder kennwortgeschützte Dateien werden abgewiesen.
 
 Die eingereichte Testdatei wurde erfolgreich mit einer Antwort eingelesen: Technisches Gestalten als Erstwahl, Textiles Gestalten als Zweitwahl und Musik als Einzelfach. Zusätzliche synthetische Prüfungen in `verify-forms.cjs` decken alle drei Zweitwahl-Zweige, veraltete Werte in anderen Zweigen, fehlende Namen und Wahlen, Klassen- und Niveauzuordnung, doppelte Antwort-IDs, Forms-CSV sowie unterschiedliche XLSX-Speicherformen ab. Die bestehenden Prüfungen in `verify.cjs` bleiben erfolgreich. Eine visuelle Prüfung des Uploads im Browser wurde nicht durchgeführt. Eine direkte Verbindung zum schulischen SharePoint ist damit noch nicht eingerichtet: Die Forms-Antwortdatei wird weiterhin heruntergeladen und anschliessend in das Einteilungstool importiert.
+
+Damit der Forms-Import nicht nur mit einer einzelnen Antwort, sondern unter realistischen Bedingungen geprüft werden konnte, liess ich mit KI eine Testliste im Format der Forms-Antworten erstellen. Sie enthält 160 anonyme, fiktive SuS mit Klasse, Erstwahl, passender Zweitwahl und Einzelfach (`Forms-Testdaten_160_SuS.xlsx`). Echte Namen oder Daten aus der Umfrage wurden dafür nicht verwendet. Diese Testliste diente in den folgenden Phasen als wichtigste Grundlage für die Überprüfung der Einteilungsregeln.
 
 ### Phase 21: Passende klassenreine Gruppen zusammenführen – 12. November 2026
 
@@ -265,9 +300,46 @@ Geprüft wurden Gruppen aus drei Klassen in allen sechs Fächern und bei beiden 
 
 Mit der aktuellen Forms-Testdatei entstehen 28 Gruppen und nur noch sieben offene Fachzuteilungen statt zuvor 28. Die Gestaltungs-Erstwahlen können vollständig erfüllt werden. Die integrierten 160 Beispieldaten ergeben 32 Gruppen ohne offene Fachzuteilungen. Die früheren Ergebnisse und Beschränkungen auf feste Zweierpaare beschreiben historische Zwischenstände.
 
+### Schrift und Bedienelemente vereinheitlichen – 13. November 2026
+
+Nach den inhaltlichen Erweiterungen überarbeitete ich mit ChatGPT die Gestaltung der Anwendung. Ziel waren eine einheitliche Schrift, gut lesbare Bedienelemente und eine klare Gewichtung der Schaltflächen.
+
+- Eingabefelder, Auswahllisten und Schaltflächen verwenden nun dieselbe Schrift wie der übrige Text.
+- Kleine Schriftgrössen wurden angehoben, etwa in Gruppenlisten, Tabellen und Auswahlmenüs. Die Zahlenfelder der Gruppengrössen sind grösser und dadurch leichter zu bedienen.
+- Die Schaltflächen wurden nach ihrer Wichtigkeit gestaltet: «Gruppen berechnen» ist als Hauptaktion farbig hervorgehoben, die Exportfunktionen (PDF, CSV, Plan sichern) erscheinen zurückhaltender als weisse Schaltflächen mit blauem Rand.
+- Bei der Bedienung mit der Tastatur zeigt eine deutliche blaue Umrandung, welches Element gerade ausgewählt ist.
+- Die Darstellung auf mittleren und kleinen Bildschirmen wurde angepasst, damit Kennzahlen, Filter und Schaltflächen auch auf schmalen Geräten übersichtlich umbrechen.
+
+Die Einteilungslogik blieb dabei unverändert.
+
+### Phase 26: Bedienoberfläche überprüfen und vereinfachen – 16. November 2026
+
+Nach den vielen inhaltlichen Erweiterungen fiel mir auf, dass der linke Navigationsbereich sehr lang geworden war. Ich liess die Oberfläche deshalb mit Claude Code überprüfen. Dabei zeigte sich, dass die zentrale Schaltfläche «Gruppen berechnen» erst nach zwölf Eingabefeldern für die Gruppengrössen folgte und «Plan öffnen» ganz unten stand, obwohl man diese Funktion oft zu Beginn braucht. Zudem war der Erklärtext «So wird zugeteilt» über viele Entwicklungsphasen gewachsen. Er enthielt Wiederholungen, überholte Hinweise wie die entfallene Vorgabe S2a + S2c und teilweise widersprüchliche Begriffe wie «Paar» statt «Klassenblock».
+
+Vor der Überarbeitung erstellte ich eine Sicherheitskopie der Anwendung, um bei Bedarf zum bisherigen Stand zurückkehren zu können. Anschliessend liess ich den linken Bereich neu ordnen:
+
+- Unter «SuS-Daten» stehen nun der Datei-Import, «Gespeicherten Plan öffnen» und die Beispieldaten direkt untereinander. Das selten benötigte Einfügen einer Tabelle als Text ist eingeklappt.
+- Die Gruppengrössen sind standardmässig eingeklappt. Aufgeklappt erscheinen Real und Sek in einer kompakten Tabelle nebeneinander, gegliedert nach Doppel- und Einzellektion. Eine kleine Statusanzeige zeigt, ob die Standardwerte gelten, Werte angepasst wurden oder ungültige Werte vorliegen, etwa ein Minimum über dem Maximum. Bei ungültigen Werten klappt der Bereich vor der Berechnung automatisch auf.
+- Dadurch ist «Gruppen berechnen» ohne Scrollen sichtbar. «Plan sichern» steht mit einem kurzen Datenschutzhinweis am Ende der Spalte.
+
+Den Erklärtext «So wird zugeteilt» verschob ich unter die Gruppenübersicht und liess ihn auf den aktuellen Stand kürzen: fünf nummerierte Regeln (Erstwahlen zuerst, klassenrein oder im Klassenblock, feste Blöcke mit höchstens drei Klassen, Zweitwahlen nur im Notfall, lieber offen als regelwidrig) sowie kurze Hinweise zu den strikten Trennungen, zum manuellen Anpassen, zum Import, zu den Grenzen des Werkzeugs und zum Datenschutz. Auch die Kurzfassung oben rechts wurde an diese Regeln angepasst.
+
+Zusätzlich wurden kleinere Punkte bereinigt. Die Anwendung verwendet nun durchgehend die Du-Form; zuvor standen «deine Planung» und «eure Wahlfachgruppen» nebeneinander. Die Seitenbeschreibung enthält kein veraltetes Datum mehr. Neu erscheint beim Schliessen oder Neuladen des Browser-Tabs eine Rückfrage, wenn seit dem letzten Sichern Daten importiert, Gruppen berechnet oder manuelle Änderungen vorgenommen wurden. Da die Daten bewusst nur im Arbeitsspeicher des Tabs liegen, schützt dies vor versehentlichem Datenverlust.
+
+Die Einteilungslogik selbst wurde nicht verändert; alle Eingabefelder und Schaltflächen behielten ihre bisherigen technischen Bezeichnungen. Die Darstellung wurde mit Bildschirmaufnahmen in breiter und schmaler Ansicht geprüft. Die automatisierten Prüfungen in `verify.cjs` und `verify-forms.cjs` konnten auf dem verwendeten Gerät nicht ausgeführt werden, da Node.js nicht installiert ist. Die Funktionen Laden, Berechnen, Sichern, Wiederöffnen sowie die Rückfrage beim Schliessen sind daher noch von Hand im Browser zu testen.
+
+Diese Phase zeigt mir, dass ein Werkzeug durch schrittweise Erweiterungen funktional besser, in der Bedienung aber unübersichtlicher werden kann. Eine bewusste Überprüfung der Oberfläche aus Sicht der Anwenderinnen und Anwender ist deshalb ebenso wichtig wie die Weiterentwicklung der Einteilungsregeln.
+
 ## 3. Einsatz von künstlicher Intelligenz
 
-Ich setzte KI als Unterstützung bei der Konzeption, Programmierung, Fehlersuche und sprachlichen Überarbeitung ein. Dabei formulierte ich die Anforderungen und prüfte die vorgeschlagenen Lösungen anhand der schulischen Einteilungsregeln. Anpassungen wurden schrittweise vorgenommen und mit den vorhandenen Testdateien beziehungsweise Beispieldaten kontrolliert.
+Ich setzte KI als Unterstützung bei der Konzeption, Programmierung, Fehlersuche und sprachlichen Überarbeitung ein. Dabei arbeitete ich mit zwei Werkzeugen:
+
+- **ChatGPT** war bis kurz vor Projektende mein einziges KI-Werkzeug. Damit entstanden alle Phasen von der ersten Version des Tools über die Einteilungsregeln, das Farbkonzept und Layout der Schulen Baar bis zur Forms-Umfrage und dem passenden Import (Phasen 1–25).
+- **Claude Code** zog ich erst gegen Ende des Projekts hinzu, als mir bewusst wurde, dass ein zweites Werkzeug sinnvoll sein könnte. Claude Code arbeitet direkt in den Projektdateien auf meinem Computer. Damit liess ich am 16. November 2026 die Oberfläche überprüfen und vereinfachen (Phase 26) sowie dieses Logbuch ergänzen und eine Zusammenfassung für den Leistungsnachweis entwerfen.
+
+Der zusätzliche Blick eines zweiten Werkzeugs war hilfreich: Claude Code fand in der bestehenden Anwendung Punkte, die im Verlauf der vielen Erweiterungen untergegangen waren, etwa den veralteten Erklärtext und die fehlende Warnung vor Datenverlust.
+
+In beide Werkzeuge gab ich keine echten Schülerdaten ein, sondern arbeitete mit anonymisierten beziehungsweise fiktiven Testdaten. Dabei formulierte ich die Anforderungen und prüfte die vorgeschlagenen Lösungen anhand der schulischen Einteilungsregeln. Anpassungen wurden schrittweise vorgenommen und mit den vorhandenen Testdateien beziehungsweise Beispieldaten kontrolliert.
 
 Die KI übernahm nicht die pädagogische oder organisatorische Entscheidung. Insbesondere Gruppengrössen, Ausnahmen sowie die Zulässigkeit von Mischgruppen müssen weiterhin durch die verantwortliche Person beurteilt werden. Für mich war die KI vor allem ein Werkzeug, um Ideen schneller in einen funktionsfähigen Prototyp zu übersetzen und technische Probleme gezielt zu bearbeiten.
 
@@ -288,13 +360,15 @@ Weitere wichtige Erkenntnisse waren:
 
 Das Projekt zeigt mir, dass KI die Entwicklung eines auf einen konkreten Schulprozess zugeschnittenen Werkzeugs stark beschleunigen kann. Ohne genaue Kenntnis des schulischen Ablaufs wäre jedoch keine brauchbare Lösung entstanden. Entscheidend war das Zusammenspiel zwischen meinem Fachwissen, dem schrittweisen Testen und der technischen Unterstützung durch KI.
 
-Besonders gelungen finde ich die lokale und übersichtliche Lösung: Die Anwendung benötigt keinen Server, kann mit realistischen Testdaten ausprobiert werden und macht offene Fälle transparent. Gleichzeitig sehe ich Grenzen. Die gemeinsamen Klassenpaare berücksichtigen die organisatorische Verbindung der Fächer; konkrete Raumbelegung, Lehrpersonen und weitere Stundenplanüberschneidungen werden jedoch noch nicht berechnet. Auch die gefundene Gruppierung bleibt ein Vorschlag und muss kontrolliert werden.
+Besonders gelungen finde ich die lokale und übersichtliche Lösung: Die Anwendung benötigt keinen Server, kann mit realistischen Testdaten ausprobiert werden und macht offene Fälle transparent. Gleichzeitig sehe ich Grenzen. Die gemeinsamen Klassenblöcke mit bis zu drei Klassen berücksichtigen die organisatorische Verbindung der Fächer; konkrete Raumbelegung, Lehrpersonen und weitere Stundenplanüberschneidungen werden jedoch noch nicht berechnet. Auch die gefundene Gruppierung bleibt ein Vorschlag und muss kontrolliert werden.
 
 Für eine Weiterentwicklung würde ich strukturierte Tests mit echten, anonymisierten Planungsfällen durchführen, Rückmeldungen weiterer Anwenderinnen und Anwender einholen und die Regeln für manuelle Ausnahmezuteilungen noch deutlicher in der Oberfläche und in den Exporten dokumentieren.
 
+In einem weiteren Schritt kann ich mir vorstellen, ein entsprechendes Werkzeug auch für die deutlich komplexere 3. Oberstufe zu entwickeln und weitere digitale Hilfsmittel für die Stundenplanung zu erstellen. Dieser Umfang würde jedoch über den vorliegenden Leistungsnachweis hinausgehen und wäre eher als Thema einer CAS-Abschlussarbeit geeignet.
+
 ## 6. Aktueller Stand
 
-Die Anwendung liegt als eigenständige Datei `index.html` vor. Zwei anonymisierte Testdateien für die Schulhäuser Sennweid und Sternmatt stehen zur Verfügung. Der Funktionsumfang umfasst Import, Datenprüfung, automatische Gruppenbildung, manuelle Anpassung, getrennt dargestellte offene Doppel- und Einzelfachzuteilungen, CSV- und PDF-Export sowie das Sichern und Wiederöffnen eines Planungsstands. Die wiederholbaren Prüfungen sind in `verify.cjs` und für den Forms-Import in `verify-forms.cjs` dokumentiert. Zusätzlich zu den bisherigen CSV-Listen werden heruntergeladene Microsoft-Forms-Antworten als XLSX oder CSV unterstützt. Eine direkte SharePoint-Verbindung besteht nicht.
+Die Anwendung liegt als eigenständige Datei `index.html` vor. Zwei anonymisierte Testdateien für die Schulhäuser Sennweid und Sternmatt stehen zur Verfügung. Der Funktionsumfang umfasst Import, Datenprüfung, automatische Gruppenbildung, manuelle Anpassung, getrennt dargestellte offene Doppel- und Einzelfachzuteilungen, CSV- und PDF-Export sowie das Sichern und Wiederöffnen eines Planungsstands. Die wiederholbaren Prüfungen sind in `verify.cjs` und für den Forms-Import in `verify-forms.cjs` dokumentiert. Zusätzlich zu den bisherigen CSV-Listen werden heruntergeladene Microsoft-Forms-Antworten als XLSX oder CSV unterstützt. Eine direkte SharePoint-Verbindung besteht nicht. Die Anwendung ist schuljahrunabhängig: Sie enthält keine fest eingetragenen Schuljahre, und Klassen sowie Fachwahlen stammen jeweils aus dem Import. Für jedes neue Schuljahr müssen lediglich die Klassenoptionen im Forms-Formular aktualisiert werden. Zudem muss die Zuordnung der Klassenbuchstaben a/b/c zu Schulhaus 1 und d/e/f zu Schulhaus 2 weiterhin gelten. Die Bedienoberfläche ist seit Phase 26 kompakter: Gruppengrössen und Texteingabe sind einklappbar, die Regeln stehen gekürzt unter der Gruppenübersicht, und vor dem Schliessen eines Tabs mit ungesicherten Änderungen erscheint eine Rückfrage.
 
 Aktuell gelten folgende Standardgrenzen:
 
