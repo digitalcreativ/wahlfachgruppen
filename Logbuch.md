@@ -49,13 +49,30 @@ Ich legte folgende Grundregeln fest:
 - Die Einzellektion umfasst Musik, Deutsch plus und Informatik plus.
 - Gruppen sollen wenn möglich klassenintern gebildet werden.
 - Reicht dies nicht aus, dürfen Klassen innerhalb desselben Schulhauses gemischt werden.
-- Erst danach werden schulhausübergreifende Gruppen geprüft.
+- Erst danach werden schulhausübergreifende Gruppen geprüft (siehe Hinweis unten).
 - Real und Sek bleiben grundsätzlich getrennt. Eine Mischung ist nur als gekennzeichnete Ausnahme bei zu kleinen Gruppen vorgesehen.
 - Mindest- und Maximalgrössen müssen einstellbar sein.
+
+> Hinweis: Diese Regeln beschreiben die erste Umsetzung. Sie liess schulhausübergreifende Gruppen noch als letzte Möglichkeit zu, obwohl ich bereits in meinem ersten Prompt verlangt hatte, dass die Schulhäuser getrennt bleiben (siehe Phase 2). Diese Abweichung fiel erst später bei Tests auf. Die Trennung wurde in Phase 17 verbindlich umgesetzt.
 
 Eine besondere Herausforderung waren unterschiedliche CSV-Strukturen. Neben einer Standardliste sollte auch eine Fachmatrix eingelesen werden können. Fehlende oder mehrdeutige Angaben dürfen dabei nicht automatisch erfunden werden, sondern müssen sichtbar bleiben.
 
 ### Phase 2: Erster funktionsfähiger Prototyp
+
+Ausgangspunkt war mein erster Prompt an ChatGPT:
+
+> «Kannst du mir bitte helfen ein Tool zu entwickeln, welches wir für die Gruppeneinteilung von Wahlfächern nutzen können?»
+
+Dazu gab ich folgende Informationen und Kriterien an:
+
+- Anzahl SuS und Klassen
+- Angebot der Fächer für Doppellektionen (TG, TxG, BG) und Einzellektionen (Informatik, Deutsch, Musik)
+- Gruppengrösse in den einzelnen Fächern
+- Die Doppellektion wird mit Prioritäten gewählt (1. und 2. Priorität).
+- Zuteilungskriterien für die Gruppeneinteilung:
+  - innerhalb der eigenen Klasse
+  - Real (R) und Sek (S) getrennt, Klassen gemischt
+  - Schulhäuser bleiben getrennt (Sennweid: Klassen a–c, Sternmatt 2: Klassen d–f)
 
 Den Prototyp erstellte ich mit ChatGPT durch Vibe-Coding: Ich beschrieb die gewünschten Funktionen und Regeln in eigenen Worten, die KI setzte sie in Programmcode um, und ich prüfte und verfeinerte das Ergebnis im Dialog. So entstand eine eigenständige Browseranwendung in einer HTML-Datei. Sie kann lokal geöffnet werden und verarbeitet alle Daten nur im Arbeitsspeicher des Browser-Tabs. Dadurch ist keine Installation nötig und die Daten bleiben auf dem verwendeten Gerät.
 
@@ -304,8 +321,8 @@ Mit der aktuellen Forms-Testdatei entstehen 28 Gruppen und nur noch sieben offen
 
 Nach den inhaltlichen Erweiterungen überarbeitete ich mit ChatGPT die Gestaltung der Anwendung. Ziel waren eine einheitliche Schrift, gut lesbare Bedienelemente und eine klare Gewichtung der Schaltflächen.
 
-- Eingabefelder, Auswahllisten und Schaltflächen verwenden nun dieselbe Schrift wie der übrige Text.
-- Kleine Schriftgrössen wurden angehoben, etwa in Gruppenlisten, Tabellen und Auswahlmenüs. Die Zahlenfelder der Gruppengrössen sind grösser und dadurch leichter zu bedienen.
+- Bisher waren zwei Schriftarten gemischt (DM Sans und Manrope). Nun verwendet die gesamte Anwendung einheitlich Arial, auch in Eingabefeldern, Auswahllisten und Schaltflächen.
+- Die Grundschrift wurde von 14 auf 16 Pixel vergrössert. Sehr kleine Texte von 10 bis 12 Pixeln, etwa in Gruppenlisten, Hinweisen, Tabellen und Auswahlmenüs, wurden auf 12 bis 14 Pixel angehoben. Die Zahlenfelder der Gruppengrössen sind grösser und dadurch leichter zu bedienen.
 - Die Schaltflächen wurden nach ihrer Wichtigkeit gestaltet: «Gruppen berechnen» ist als Hauptaktion farbig hervorgehoben, die Exportfunktionen (PDF, CSV, Plan sichern) erscheinen zurückhaltender als weisse Schaltflächen mit blauem Rand.
 - Bei der Bedienung mit der Tastatur zeigt eine deutliche blaue Umrandung, welches Element gerade ausgewählt ist.
 - Die Darstellung auf mittleren und kleinen Bildschirmen wurde angepasst, damit Kennzahlen, Filter und Schaltflächen auch auf schmalen Geräten übersichtlich umbrechen.
@@ -359,6 +376,8 @@ Weitere wichtige Erkenntnisse waren:
 ## 5. Reflexion
 
 Das Projekt zeigt mir, dass KI die Entwicklung eines auf einen konkreten Schulprozess zugeschnittenen Werkzeugs stark beschleunigen kann. Ohne genaue Kenntnis des schulischen Ablaufs wäre jedoch keine brauchbare Lösung entstanden. Entscheidend war das Zusammenspiel zwischen meinem Fachwissen, dem schrittweisen Testen und der technischen Unterstützung durch KI.
+
+Rückblickend fällt mir beim Vergleich mit meinem ersten Prompt auf, dass die wichtigsten Grundregeln von Anfang an formuliert waren, etwa die Trennung der Schulhäuser. Die KI setzte diese Vorgabe zunächst jedoch nur als Bevorzugung um. Erst meine Tests zeigten, dass ein Klassenblock trotzdem zwei Schulhäuser verbinden konnte (Phase 17). Andere Kriterien wie «Klassen gemischt» oder die Prioritäten der Doppellektion mussten im Verlauf deutlich genauer gefasst werden: Daraus wurden feste Klassenblöcke mit höchstens drei Klassen und Zweitwahlen, die nur im Notfall eingesetzt werden. Eine klare Vorgabe im Prompt garantiert also noch nicht, dass die KI sie auch verbindlich umsetzt. Die Kontrolle der Ergebnisse bleibt unverzichtbar.
 
 Besonders gelungen finde ich die lokale und übersichtliche Lösung: Die Anwendung benötigt keinen Server, kann mit realistischen Testdaten ausprobiert werden und macht offene Fälle transparent. Gleichzeitig sehe ich Grenzen. Die gemeinsamen Klassenblöcke mit bis zu drei Klassen berücksichtigen die organisatorische Verbindung der Fächer; konkrete Raumbelegung, Lehrpersonen und weitere Stundenplanüberschneidungen werden jedoch noch nicht berechnet. Auch die gefundene Gruppierung bleibt ein Vorschlag und muss kontrolliert werden.
 
